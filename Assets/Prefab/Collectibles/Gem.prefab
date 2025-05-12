@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8337138175657919997}
+  - component: {fileID: 6011554561656490578}
   - component: {fileID: 562138194356595257}
   - component: {fileID: 6438146504251669243}
   - component: {fileID: 7907019333355540439}
@@ -35,6 +36,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6011554561656490578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615832254790428340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9a355f89bda074398f66aa808f4515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entrouNoPortal:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GestordeCenas, Assembly-CSharp
+        m_MethodName: MudarCena
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  sceneNumber: 2
 --- !u!114 &562138194356595257
 MonoBehaviour:
   m_ObjectHideFlags: 0

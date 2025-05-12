@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.051, y: -0.82, z: 0.1}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 2.9808, y: 2.9368, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,6 +102,7 @@ MonoBehaviour:
   fireDamage: 2
   activationDelay: 1
   activationTime: 1
+  fireSound: {fileID: 8300000, guid: b4ce8d300f34a944980868f31bd5afbf, type: 3}
 --- !u!61 &6705270383856894967
 BoxCollider2D:
   m_ObjectHideFlags: 0

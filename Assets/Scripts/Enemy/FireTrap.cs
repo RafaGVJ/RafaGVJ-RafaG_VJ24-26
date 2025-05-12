@@ -27,7 +27,7 @@ public class FireTrap : MonoBehaviour
         spriteRend = GetComponent<SpriteRenderer>();    
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         Player playerDectected = collision.GetComponent<Player>();
 
@@ -64,4 +64,5 @@ public class FireTrap : MonoBehaviour
         isTriggered = false;
         anim.SetBool("Activated", false);
     }
+
 }

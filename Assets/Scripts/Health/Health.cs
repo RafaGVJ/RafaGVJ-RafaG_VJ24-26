@@ -10,8 +10,8 @@ public class Health : MonoBehaviour
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip respawnSound;
     [SerializeField] private AudioClip portalSound;
-    [SerializeField] private float startingHealth;
     [SerializeField] private GameObject portal;
+    [SerializeField] private float startingHealth;
    
     
 
