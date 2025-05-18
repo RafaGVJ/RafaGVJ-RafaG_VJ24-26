@@ -12,9 +12,9 @@ public class Health : MonoBehaviour
     [SerializeField] private AudioClip portalSound;
     [SerializeField] private GameObject portal;
     [SerializeField] private float startingHealth;
-   
-    
 
+
+    private Collider2D playerCollider;
     private float currentHealth;
 
     public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
     {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
+        playerCollider = GetComponent<Collider2D>();
         portal.SetActive(false);
     }
 
@@ -39,8 +40,11 @@ public class Health : MonoBehaviour
         {
             SoundManager.instance.PlaySound(deathSound);
             anim.SetTrigger("Dead");
-            
-           
+            if (playerCollider != null)
+            {
+                playerCollider.enabled = false;
+            }
+
         }
     }
     public void AddHealth(float value)
@@ -68,7 +72,9 @@ public class Health : MonoBehaviour
 
     public bool IsDead()
     {
+        
         return currentHealth <= 0;
+
         
     }
 }

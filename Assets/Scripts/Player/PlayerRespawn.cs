@@ -14,33 +14,49 @@ public class PlayerRespawn : MonoBehaviour
 
     private void Awake()
     {
-        
-        playerHealth = GetComponent<Health>();
+        if (playerHealth == null)
+            playerHealth = GetComponent<Health>();
+
+        if (playerHealth == null)
+            playerHealth = FindObjectOfType<Health>(); // Garante que vai encontrar, mesmo em outro GameObject
+
         uiManager = FindObjectOfType<UIManager>();
+
+        
     }
     
    
     public void CheckRespawn()
     {
-        if(currentCheckpoint == null)
+        if (currentCheckpoint == null)
         {
-            uiManager.GameOver();
+            if (uiManager != null)
+                uiManager.OnGameOver();
+            else
+                Debug.LogError("UIManager está nulo ao tentar chamar OnGameOver!");
+
             return;
         }
 
         transform.position = currentCheckpoint.position;
-        playerHealth.Respawn();
-    }
 
+        if (playerHealth != null)
+            playerHealth.Respawn();
+        else
+            Debug.LogError("PlayerHealth está nulo ao tentar chamar Respawn!");
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
         if (collision.transform.tag == "CheckPoint")
         {
             currentCheckpoint = collision.transform;
             SoundManager.instance.PlaySound(checkpointSound);
             collision.GetComponent<Collider2D>().enabled = false;
-            collision.GetComponent <Animator>().SetTrigger("Apear");
+            collision.GetComponent<Animator>().SetTrigger("Apear");
         }
     }
 }
+
+
+    

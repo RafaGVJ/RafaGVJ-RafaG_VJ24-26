@@ -22,14 +22,14 @@ public class Player : MonoBehaviour
         private Rigidbody2D rigidBody;
         private BoxCollider2D boxCollider;
         private Animator animator;
+        private PlayerRespawn respawn;
 
         private bool isGrounded;
         private bool isAttacking;
         private bool forceUnGround;
+    #endregion
 
-        #endregion
-
-        private void Awake()
+    private void Awake()
         {
             rigidBody = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
@@ -142,7 +142,13 @@ public class Player : MonoBehaviour
                 interactable?.Interactable();
             }
         }
+    public void SetCheckpoint(Transform checkpoint)
+    {
+        if (respawn != null)
+            respawn.CurrentCheckpoint = checkpoint;
     }
+}
+    
 
 
 

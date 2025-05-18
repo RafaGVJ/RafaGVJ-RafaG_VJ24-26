@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Gem : MonoBehaviour, IIColectible
 {
-    [SerializeField] private AudioClip coinSound;
+    [SerializeField] private AudioClip gemSound;
     [SerializeField] private GameObject portal;
     [SerializeField] private AudioClip portalSound;
 
@@ -14,7 +14,7 @@ public class Gem : MonoBehaviour, IIColectible
 
     public void Collect()
     {
-        SoundManager.instance.PlaySound(coinSound);
+        SoundManager.instance.PlaySound(gemSound);
         StartCoroutine(Portal());
         
       

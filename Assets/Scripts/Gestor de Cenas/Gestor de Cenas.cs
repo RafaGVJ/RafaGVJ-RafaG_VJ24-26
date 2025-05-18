@@ -5,10 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GestordeCenas : MonoBehaviour
 {
-    [SerializeField] private string nomeDaCena;
+    [SerializeField] private string sceneNumber;
 
     public void MudarCena()
     {
-        SceneManager.LoadScene(1);
+        if (!string.IsNullOrEmpty(sceneNumber))
+        {
+            SceneManager.LoadScene(sceneNumber);
+        }
+        else
+        {
+            Debug.LogWarning("Nome da cena não definido!");
+        }
     }
 }

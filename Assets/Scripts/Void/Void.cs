@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Void : MonoBehaviour
 {
-
+    [SerializeField] private AudioSource playerFall;
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player player = collision.gameObject.GetComponent<Player>();
-        if (player != null)
+        if (collision.CompareTag("Player")) // Quando o jogador entrar no void
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            collision.GetComponent<PlayerRespawn>().CheckRespawn();// Respawn no último checkpoint ou reinício da cena
+            playerFall.Play();
         }
+        
     }
 }
