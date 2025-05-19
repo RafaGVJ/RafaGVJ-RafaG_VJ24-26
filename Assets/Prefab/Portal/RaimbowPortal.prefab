@@ -62,6 +62,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  sceneNumber: 0
 --- !u!95 &2314058896731553643
 Animator:
   serializedVersion: 5

@@ -14,9 +14,7 @@ public class UIManager : MonoBehaviour, IGameEventsListener
     [SerializeField] private GameObject endPortals;
     [SerializeField] private Text textScore;
 
-    private GameData gameData = new GameData();
-
-    private int score;
+    
     public static UIManager instance;
 
     private void Awake()
@@ -41,6 +39,10 @@ public class UIManager : MonoBehaviour, IGameEventsListener
         gameOverScreen.SetActive(false);
         pauseScreen.SetActive(false);
         endPortals.SetActive(true);
+        if (textScore != null)
+            textScore.text = GameManager.Instance.GameData.GetScore().ToString("0");
+        DontDestroyOnLoad(gameObject);
+        
     }
 
     private void OnEnable()
@@ -91,10 +93,9 @@ public class UIManager : MonoBehaviour, IGameEventsListener
     #region Score
     public void OnAddPoints(int points)
     {
-        score += points;
-        textScore.text = score.ToString("0");
+        GameManager.Instance.GameData.AddPoints(points);
         if (textScore != null)
-            textScore.text = score.ToString("0");
+            textScore.text = GameManager.Instance.GameData.GetScore().ToString("0");
     }
     #endregion
 
@@ -109,23 +110,30 @@ public class UIManager : MonoBehaviour, IGameEventsListener
 
     public void Restart()
     {
-        score = 0;
-        textScore.text = "0";
+        GameManager.Instance.GameData.ResetScore();
+        textScore.text = GameManager.Instance.GameData.GetScore().ToString("0");
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu()
     {
-        score = 0;
-        textScore.text = "0";
+        GameManager.Instance.GameData.ResetScore();
+        textScore.text = GameManager.Instance.GameData.GetScore().ToString("0");
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(0);
+        endPortals.SetActive(false);
     }
 
     public void Quit()
     {
         Application.Quit();
+    }
+    public void ResetScoreManualmente()
+    {
+        GameManager.Instance.GameData.ResetScore();
+        GameManager.Instance.GameData.Save(); // salva o reset
+        textScore.text = "0";
     }
 }
 

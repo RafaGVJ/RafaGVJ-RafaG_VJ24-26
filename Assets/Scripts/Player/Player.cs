@@ -30,13 +30,13 @@ public class Player : MonoBehaviour
     #endregion
 
     private void Awake()
-        {
+    {
             rigidBody = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             boxCollider = GetComponent<BoxCollider2D>();
             playerHealth = GetComponent<Health>();
-        }
+    }
 
         private void Update()
         {

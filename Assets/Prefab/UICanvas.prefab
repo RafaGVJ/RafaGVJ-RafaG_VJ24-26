@@ -711,7 +711,7 @@ MonoBehaviour:
   gameOverSound: {fileID: 8300000, guid: d554245c3541fc045beffb1d9d95a8b8, type: 3}
   backgroundSound: {fileID: 0}
   pauseScreen: {fileID: 1263657310302612850}
-  endPortals: {fileID: 0}
+  endPortals: {fileID: 6240975157696392165, guid: 6a84057a57b4976448732f94689e5071, type: 3}
   textScore: {fileID: 5494129255629421068}
 --- !u!223 &739543756782351094
 Canvas:
