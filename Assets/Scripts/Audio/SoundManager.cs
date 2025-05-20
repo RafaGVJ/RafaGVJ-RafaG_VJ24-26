@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance {  get; private set; }
+    public static SoundManager Instance {  get; private set; }
 
     [SerializeField] private AudioSource soundSource;
     [SerializeField] private AudioSource musicSource;
 
     private void Awake()
     {
-        instance = this;
-        soundSource = GetComponent<AudioSource>();
-        musicSource =  transform.GetChild(0).GetComponent<AudioSource>();
+        Instance = this;
+        
         //Keep Object in next scene
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         //Destroy Duplicate object
-        else if(instance !=null && instance!= this)
+        else if(Instance !=null && Instance!= this)
         {
             Destroy(gameObject);
         }
@@ -29,6 +28,11 @@ public class SoundManager : MonoBehaviour
         //Assign initial volume
         ChangeSoundVolume(0);
         ChangeMusicVolume(0);
+    }
+    private void Start()
+    {
+        soundSource = GetComponent<AudioSource>();
+        musicSource = transform.GetChild(0).GetComponent<AudioSource>();
     }
     public void PlaySound(AudioClip _sound)
     {

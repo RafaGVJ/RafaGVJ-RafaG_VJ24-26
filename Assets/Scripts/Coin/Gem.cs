@@ -14,7 +14,7 @@ public class Gem : MonoBehaviour, IIColectible
 
     public void Collect()
     {
-        SoundManager.instance.PlaySound(gemSound);
+        SoundManager.Instance.PlaySound(gemSound);
         StartCoroutine(Portal());
         
       
@@ -24,7 +24,7 @@ public class Gem : MonoBehaviour, IIColectible
     IEnumerator Portal()
     {
         yield return new WaitForSeconds(1f);
-        SoundManager.instance.PlaySound(portalSound);
+        SoundManager.Instance.PlaySound(portalSound);
         portal.SetActive(true);
         yield return new WaitForSeconds(0.7f);
         portal.SetActive(false);

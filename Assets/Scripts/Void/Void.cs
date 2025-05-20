@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 public class Void : MonoBehaviour
 {
     [SerializeField] private AudioSource playerFall;
-   
+    
+    private void Start()
+    {
+        playerFall.GetComponent<AudioSource>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) // Quando o jogador entrar no void

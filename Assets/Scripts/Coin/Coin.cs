@@ -17,7 +17,7 @@ public class Coin : MonoBehaviour,IIColectible
    
    public void Collect()
     {
-        SoundManager.instance.PlaySound(coinSound);
+        SoundManager.Instance.PlaySound(coinSound);
         uiManager.OnAddPoints(points);
         Destroy(gameObject);
     }

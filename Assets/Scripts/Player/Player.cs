@@ -40,13 +40,14 @@ public class Player : MonoBehaviour
 
         private void Update()
         {
-            if (playerHealth.IsDead())
-            {
-                rigidBody.velocity = Vector2.zero;
-                return;
-            }
+        if (playerHealth.IsDead)
+        {
+            rigidBody.velocity = Vector2.zero;
+            return;
+        }
 
-            HandleMovement();
+
+        HandleMovement();
             HandleJump();
             GroundCheck();
             HandleAttack();
@@ -71,7 +72,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
-                SoundManager.instance.PlaySound(jumpSound);
+                SoundManager.Instance.PlaySound(jumpSound);
                 animator.SetTrigger("Jump");
                 rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 StartCoroutine(ForceUnGroundTimer());
@@ -103,7 +104,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && CanAttack())
         {
-            SoundManager.instance.PlaySound(attackSound);
+            SoundManager.Instance.PlaySound(attackSound);
             animator.SetTrigger("IsAttacking");
             StartCoroutine(AttackLock(0.3f)); // trava por 0.3 segundos, por exemplo
         }

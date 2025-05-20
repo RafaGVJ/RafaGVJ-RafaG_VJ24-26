@@ -1,7 +1,7 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour, IGameEventsListener
 {
@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour, IGameEventsListener
     [SerializeField] private GameObject endPortals;
     [SerializeField] private Text textScore;
 
-    
     public static UIManager instance;
 
     private void Awake()
@@ -22,7 +21,6 @@ public class UIManager : MonoBehaviour, IGameEventsListener
         if (instance == null)
         {
             instance = this;
-           
         }
         else if (instance != this)
         {
@@ -39,10 +37,8 @@ public class UIManager : MonoBehaviour, IGameEventsListener
         gameOverScreen.SetActive(false);
         pauseScreen.SetActive(false);
         endPortals.SetActive(true);
-        if (textScore != null)
-            textScore.text = GameManager.Instance.GameData.GetScore().ToString("0");
+
         DontDestroyOnLoad(gameObject);
-        
     }
 
     private void OnEnable()
@@ -51,6 +47,8 @@ public class UIManager : MonoBehaviour, IGameEventsListener
         GameEvents.OnWin += OnWin;
         GameEvents.OnAddPoints += OnAddPoints;
         GameEvents.OnPause += OnPause;
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
@@ -59,6 +57,8 @@ public class UIManager : MonoBehaviour, IGameEventsListener
         GameEvents.OnWin -= OnWin;
         GameEvents.OnAddPoints -= OnAddPoints;
         GameEvents.OnPause -= OnPause;
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Update()
@@ -67,14 +67,48 @@ public class UIManager : MonoBehaviour, IGameEventsListener
         {
             bool isPaused = pauseScreen.activeInHierarchy;
             GameEvents.TriggerPause(!isPaused);
+            endPortals.SetActive(false);
         }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Cena carregada, reconfigurando referências...");
+
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            var health = player.GetComponent<Health>();
+            if (health != null)
+            {
+                health.ResetHealth();
+
+                var healthBar = FindObjectOfType<HealthBar>();
+                if (healthBar != null)
+                {
+                    healthBar.SetTarget(health);
+                }
+            }
+        }
+
+        if (textScore != null)
+            textScore.text = GameManager.Instance.GameData.GetScore().ToString("0");
+
+        gameOverScreen.SetActive(false);
+        pauseScreen.SetActive(false);
+        winScreen.SetActive(false);
+        endPortals.SetActive(false);
+        Time.timeScale = 1f;
+
+        if (backgroundSound != null && !backgroundSound.isPlaying)
+            backgroundSound.Play();
     }
 
     #region GameOver
     public void OnGameOver()
     {
         gameOverScreen.SetActive(true);
-        if (SoundManager.instance != null) SoundManager.instance.PlaySound(gameOverSound);
+        if (SoundManager.Instance != null) SoundManager.Instance.PlaySound(gameOverSound);
         Time.timeScale = 0f;
         backgroundSound?.Stop();
     }
@@ -83,7 +117,7 @@ public class UIManager : MonoBehaviour, IGameEventsListener
     {
         winScreen.SetActive(true);
         endPortals.SetActive(false);
-        if (SoundManager.instance != null) SoundManager.instance.PlaySound(winSound);
+        if (SoundManager.Instance != null) SoundManager.Instance.PlaySound(winSound);
         Time.timeScale = 0f;
         backgroundSound?.Stop();
         Debug.Log("Win");
@@ -111,7 +145,6 @@ public class UIManager : MonoBehaviour, IGameEventsListener
     public void Restart()
     {
         GameManager.Instance.GameData.ResetScore();
-        textScore.text = GameManager.Instance.GameData.GetScore().ToString("0");
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -119,7 +152,6 @@ public class UIManager : MonoBehaviour, IGameEventsListener
     public void MainMenu()
     {
         GameManager.Instance.GameData.ResetScore();
-        textScore.text = GameManager.Instance.GameData.GetScore().ToString("0");
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
         endPortals.SetActive(false);
@@ -129,13 +161,18 @@ public class UIManager : MonoBehaviour, IGameEventsListener
     {
         Application.Quit();
     }
+
     public void ResetScoreManualmente()
     {
         GameManager.Instance.GameData.ResetScore();
-        GameManager.Instance.GameData.Save(); // salva o reset
+        GameManager.Instance.GameData.Save();
         textScore.text = "0";
     }
 }
+
+
+
+
 
 
 

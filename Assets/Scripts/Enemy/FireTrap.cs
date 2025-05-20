@@ -56,7 +56,7 @@ public class FireTrap : MonoBehaviour
         spriteRend.color = Color.white;
         isActive = true;
         anim.SetBool("Activated",true);
-        SoundManager.instance.PlaySound(fireSound);
+        SoundManager.Instance.PlaySound(fireSound);
         //Wait until X seconds,deactivate trap and restart
         yield return new WaitForSeconds(activationTime);
 

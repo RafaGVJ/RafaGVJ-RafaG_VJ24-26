@@ -1,80 +1,65 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private Animator anim;
-    [SerializeField] private AudioClip deathSound;
-    [SerializeField] private AudioClip hurtSound;
-    [SerializeField] private AudioClip respawnSound;
-    [SerializeField] private AudioClip portalSound;
-    [SerializeField] private GameObject portal;
-    [SerializeField] private float startingHealth;
+    public event Action<float, float> OnHealthChanged;
 
+    public float StartingHealth => startingHealth;
+    public float CurrentHealth => currentHealth;
+    public bool IsDead => currentHealth <= 0;
 
-    private Collider2D playerCollider;
+    [SerializeField] private float startingHealth = 10f;
     private float currentHealth;
 
-    public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip deathSound;
+    [SerializeField] private Animator anim;
+    [SerializeField] private Collider playerCollider;
 
-    private void Awake()
+    private void Start()
+    {
+        ResetHealth();
+    }
+
+    public void ResetHealth()
     {
         currentHealth = startingHealth;
-        anim = GetComponent<Animator>();
-        playerCollider = GetComponent<Collider2D>();
-        portal.SetActive(false);
+        OnHealthChanged?.Invoke(currentHealth, startingHealth);
+        anim.SetTrigger("Idle");
+        if (playerCollider != null)
+            playerCollider.enabled = true;
+    }
+    public void AddHealth(float amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, startingHealth);
+        OnHealthChanged?.Invoke(currentHealth, startingHealth);
     }
 
     public void TakeDamage(float damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0,startingHealth);
+        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
+        OnHealthChanged?.Invoke(currentHealth, startingHealth);
 
         if (currentHealth > 0)
         {
-            SoundManager.instance.PlaySound(hurtSound);
+            SoundManager.Instance.PlaySound(hurtSound);
             anim.SetTrigger("Hit");
         }
         else
         {
-            SoundManager.instance.PlaySound(deathSound);
+            SoundManager.Instance.PlaySound(deathSound);
             anim.SetTrigger("Dead");
             if (playerCollider != null)
-            {
                 playerCollider.enabled = false;
-            }
-
         }
     }
-    public void AddHealth(float value)
-    {
-        currentHealth = Mathf.Clamp(currentHealth + value, 0, startingHealth);
-    }
-
     public void Respawn()
     {
-        SoundManager.instance.PlaySound(respawnSound);
-        StartCoroutine(Portal());
-        AddHealth(startingHealth);
-        anim.ResetTrigger("Dead");
-        anim.Play("Idle_Finn");
-       
-       
-    }
-    IEnumerator Portal()
-    {
-        SoundManager.instance.PlaySound(portalSound);
-        portal.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        portal.SetActive(false);
-    }
-
-    public bool IsDead()
-    {
-        
-        return currentHealth <= 0;
-
-        
+        currentHealth = startingHealth;
+        anim.SetTrigger("Idle");  
+        if (playerCollider != null)
+            playerCollider.enabled = true;
+        OnHealthChanged?.Invoke(currentHealth, startingHealth);
     }
 }

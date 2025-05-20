@@ -12,7 +12,7 @@ public class HealthCollectible : MonoBehaviour
         if (playerDectet != null)
         {
             collision.GetComponent<Health>().AddHealth(healthValue);
-            SoundManager.instance.PlaySound(healthSound);
+            SoundManager.Instance.PlaySound(healthSound);
             Destroy(gameObject);
         }
     }

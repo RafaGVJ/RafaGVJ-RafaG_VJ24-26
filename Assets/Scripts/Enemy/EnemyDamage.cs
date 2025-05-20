@@ -13,7 +13,7 @@ public class EnemyDamage : MonoBehaviour
         if(playerDectected != null)
         {
             collision.GetComponent<Health>().TakeDamage(damage);  
-            SoundManager.instance.PlaySound(hitSound);
+            SoundManager.Instance.PlaySound(hitSound);
         }
     }
 }
