@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour, IGameEventsListener
         pauseScreen.SetActive(false);
 
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     private void OnEnable()
