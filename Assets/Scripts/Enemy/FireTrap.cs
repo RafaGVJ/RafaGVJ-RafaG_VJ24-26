@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class FireTrap : MonoBehaviour
 {
-   [Header("Damage")]
-   [SerializeField] private float fireDamage;
+    [Header("Damage")]
+    [SerializeField] private float fireDamage;
 
 
-   [Header("FireTrap Timers")]
-   [SerializeField] private float activationDelay;
-   [SerializeField] private float activationTime;
-
+    [Header("FireTrap Timers")]
+    [SerializeField] private float activationDelay;
+    [SerializeField] private float activationTime;
+    private float damageCooldown = 1f;
+    private float lastDamageTime;
 
     [SerializeField] private AudioClip fireSound;
 
@@ -24,26 +25,32 @@ public class FireTrap : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        spriteRend = GetComponent<SpriteRenderer>();    
+        spriteRend = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Player playerDectected = collision.GetComponent<Player>();
+        Health playerHealth = collision.GetComponent<Health>();
+        PlayerController playerDetected = collision.GetComponent<PlayerController>();
 
-        if (playerDectected != null)
+        if (playerHealth != null && playerDetected != null && !playerHealth.isDead)
         {
             if (!isTriggered)
             {
                 StartCoroutine(ActivateFireTrap());
             }
-            if (isActive)
+
+            if (isActive && Time.time >= lastDamageTime + damageCooldown)
             {
-                
-                collision.GetComponent<Health>().TakeDamage(fireDamage);
+                playerHealth.TakeDamage(fireDamage);
+                lastDamageTime = Time.time;
             }
         }
     }
+
+
+    // Garante que só aplica dano se for o jogador e se ele não estiver morto
+
     private IEnumerator ActivateFireTrap()
     {
         //Turn the sprite red to notify the player and trigger the trap
@@ -55,8 +62,8 @@ public class FireTrap : MonoBehaviour
 
         spriteRend.color = Color.white;
         isActive = true;
-        anim.SetBool("Activated",true);
-        SoundManager.Instance.PlaySound(fireSound);
+        anim.SetBool("Activated", true);
+        SoundManager.instance.PlaySound(fireSound);
         //Wait until X seconds,deactivate trap and restart
         yield return new WaitForSeconds(activationTime);
 
@@ -64,5 +71,6 @@ public class FireTrap : MonoBehaviour
         isTriggered = false;
         anim.SetBool("Activated", false);
     }
+
 
 }

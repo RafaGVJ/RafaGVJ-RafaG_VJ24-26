@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance {  get; private set; }
+    public static SoundManager instance { get; private set; }
 
     [SerializeField] private AudioSource soundSource;
     [SerializeField] private AudioSource musicSource;
 
     private void Awake()
     {
-        Instance = this;
-        
+        instance = this;
+        soundSource = GetComponent<AudioSource>();
+        musicSource = transform.GetChild(0).GetComponent<AudioSource>();
         //Keep Object in next scene
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         //Destroy Duplicate object
-        else if(Instance !=null && Instance!= this)
+        else if (instance != null && instance != this)
         {
             Destroy(gameObject);
         }
@@ -28,11 +29,6 @@ public class SoundManager : MonoBehaviour
         //Assign initial volume
         ChangeSoundVolume(0);
         ChangeMusicVolume(0);
-    }
-    private void Start()
-    {
-        soundSource = GetComponent<AudioSource>();
-        musicSource = transform.GetChild(0).GetComponent<AudioSource>();
     }
     public void PlaySound(AudioClip _sound)
     {
@@ -42,7 +38,7 @@ public class SoundManager : MonoBehaviour
 
     public void ChangeSoundVolume(float _change)
     {
-       ChangeSourceVolume(1,"soundVolume",_change,soundSource);
+        ChangeSourceVolume(1, "soundVolume", _change, soundSource);
     }
 
     public void ChangeMusicVolume(float _change)
@@ -52,7 +48,7 @@ public class SoundManager : MonoBehaviour
 
 
 
-    private void ChangeSourceVolume(float baseVolume ,string volumeName,float change, AudioSource source)
+    private void ChangeSourceVolume(float baseVolume, string volumeName, float change, AudioSource source)
     {
         float currentVolume = PlayerPrefs.GetFloat(volumeName, 1);
         currentVolume += change;
@@ -71,3 +67,4 @@ public class SoundManager : MonoBehaviour
         PlayerPrefs.SetFloat(volumeName, currentVolume);
     }
 }
+

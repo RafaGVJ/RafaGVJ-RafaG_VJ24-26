@@ -8,16 +8,11 @@ public class EnemyProjectiles : EnemyDamage
     [SerializeField] private float resetTime;
 
     private float lifeTime;
-    public void ActivateProjectile()
-    {
-        lifeTime = 0;
-        gameObject.SetActive(true);
-    }
 
     private void Update()
     {
         float movementSpeed = speed * Time.deltaTime;
-        transform.Translate(movementSpeed,0,0);
+        transform.Translate(movementSpeed, 0, 0);
 
         lifeTime += Time.deltaTime;
         if (lifeTime > resetTime)
@@ -25,10 +20,16 @@ public class EnemyProjectiles : EnemyDamage
             gameObject.SetActive(false);
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void ActivateProjectile()
     {
-        base.OnTriggerEnter2D(collision);
+        lifeTime = 0;
+        gameObject.SetActive(true);
+    }
+
+    private new void OnTriggerEnter2D(Collider2D collision)
+    {
+       
+            base.OnTriggerEnter2D(collision);
         gameObject.SetActive(false);
     }
 }

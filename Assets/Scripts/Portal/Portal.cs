@@ -10,14 +10,11 @@ public class Portal : MonoBehaviour
     [SerializeField] private int sceneNumber;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player playerDectected = collision.GetComponent<Player>();
+        PlayerController playerDectected = collision.GetComponent<PlayerController>();
         if (playerDectected != null)
         {
             entrouNoPortal?.Invoke();
             SceneManager.LoadScene(sceneNumber);
         }
     }
-
-   
-   
 }

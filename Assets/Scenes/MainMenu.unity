@@ -2239,8 +2239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c139c992366a1284c858166d3a0de00f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundSource: {fileID: 552429979}
-  musicSource: {fileID: 208265270}
+  soundSource: {fileID: 0}
+  musicSource: {fileID: 0}
 --- !u!4 &552429981
 Transform:
   m_ObjectHideFlags: 0
@@ -2908,12 +2908,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 1044761459}
-  winScreen: {fileID: 0}
+  winScreen: {fileID: 3484029189182827797, guid: a2b9db6d995088142afd02c9a755250d, type: 3}
   winSound: {fileID: 0}
   gameOverSound: {fileID: 8300000, guid: d554245c3541fc045beffb1d9d95a8b8, type: 3}
   backgroundSound: {fileID: 552429979}
   pauseScreen: {fileID: 133543382}
-  endPortals: {fileID: 1550105770}
   textScore: {fileID: 485292639}
 --- !u!1 &911336819
 GameObject:
@@ -3282,10 +3281,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4457877175285901043, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4682816021599053659, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1848257360}
   m_SourcePrefab: {fileID: 100100000, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
 --- !u!1 &979304187
 GameObject:
@@ -5295,11 +5298,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534213014}
   m_CullTransparentMesh: 1
---- !u!1 &1550105770 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6240975157696392165, guid: 6a84057a57b4976448732f94689e5071, type: 3}
-  m_PrefabInstance: {fileID: 7056969427177128591}
+--- !u!114 &1550287187 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7641245307670821973, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
+  m_PrefabInstance: {fileID: 972036668}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1558308258
 GameObject:
   m_ObjectHideFlags: 0
@@ -5972,6 +5981,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6131951338417640547, guid: 24d550d057f659448b0fb82f1edbb690, type: 3}
   m_PrefabInstance: {fileID: 4879890161103735341}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1848257359 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4682816021599053659, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
+  m_PrefabInstance: {fileID: 972036668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1848257360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848257359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ceeec5e701a7144c88bf1d7c9c75999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealthBar: {fileID: 1550287187}
+  totalHealthBar: {fileID: 1550287187}
+  playerHealth: {fileID: 0}
 --- !u!1 &1886038134
 GameObject:
   m_ObjectHideFlags: 0

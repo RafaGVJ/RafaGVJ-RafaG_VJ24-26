@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 7034849375935350280}
   - component: {fileID: 757789500337563701}
   m_Layer: 5
-  m_Name: VOLUME
+  m_Name: SOUND
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VOLUME
+  m_Text: SOUND
 --- !u!114 &1316669497699371076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,9 +377,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3484029189182827797}
+      - m_Target: {fileID: 5768943502389888413}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: SoundVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -707,11 +707,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 7643427696509072889}
   winScreen: {fileID: 2285409863890021720, guid: 313054b9ad446674ab1ddc4d145abe91, type: 3}
-  winSound: {fileID: 0}
+  winSound: {fileID: 8300000, guid: c9adef482859ffc4883bde5b6b644685, type: 3}
   gameOverSound: {fileID: 8300000, guid: d554245c3541fc045beffb1d9d95a8b8, type: 3}
   backgroundSound: {fileID: 0}
   pauseScreen: {fileID: 1263657310302612850}
-  endPortals: {fileID: 0}
   textScore: {fileID: 5494129255629421068}
 --- !u!223 &739543756782351094
 Canvas:
@@ -1100,9 +1099,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3484029189182827797}
+      - m_Target: {fileID: 5768943502389888413}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1935,9 +1934,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3484029189182827797}
+      - m_Target: {fileID: 5768943502389888413}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: MusicVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2178,9 +2177,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3484029189182827797}
+      - m_Target: {fileID: 5768943502389888413}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2198,6 +2197,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2891300567734835519}
     m_Modifications:
+    - target: {fileID: 1719616300552545192, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 79.4931
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719616300552545192, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 8.4865
+      objectReference: {fileID: 0}
     - target: {fileID: 2389342765908919984, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2282,13 +2289,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 7641245307670821973, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4682816021599053659, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1343401195497465751}
   m_SourcePrefab: {fileID: 100100000, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
 --- !u!224 &2773160950304410347 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2389342765908919984, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
   m_PrefabInstance: {fileID: 528215999305452635}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5163427530730695424 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4682816021599053659, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
+  m_PrefabInstance: {fileID: 528215999305452635}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1343401195497465751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5163427530730695424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ceeec5e701a7144c88bf1d7c9c75999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealthBar: {fileID: 7881213278197739534}
+  totalHealthBar: {fileID: 7881213278197739534}
+  playerHealth: {fileID: 0}
+--- !u!114 &7881213278197739534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7641245307670821973, guid: 5522acdf719aa55479030cb3feb0bc11, type: 3}
+  m_PrefabInstance: {fileID: 528215999305452635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

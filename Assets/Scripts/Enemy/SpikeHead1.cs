@@ -53,7 +53,7 @@ public class SpikeHead1 : EnemyDamage
                 attacking = true;
                 destination = directions[i];
                 checkTimer = 0;
-               
+
             }
         }
     }
@@ -68,8 +68,8 @@ public class SpikeHead1 : EnemyDamage
     {
         destination = transform.position; //Set destination as current position so it doesn't move
         attacking = false;
-        
-       
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -85,4 +85,4 @@ public class SpikeHead1 : EnemyDamage
         gameObject.transform.position = originalPos;
     }
 
-}
+}   

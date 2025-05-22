@@ -5,15 +5,23 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour
 {
    [SerializeField] protected float damage;
-    [SerializeField] private  AudioClip  hitSound;
-
-  protected void OnTriggerEnter2D(Collider2D collision)
+  
+    private PlayerController playerController;
+    private void Awake()
     {
-        Player playerDectected = collision.GetComponent<Player>();
-        if(playerDectected != null)
+        playerController= FindAnyObjectByType<PlayerController>();
+    }
+
+    protected void OnTriggerEnter2D(Collider2D collision)
+    {
+        Health playerHealth = collision.GetComponent<Health>();
+        PlayerController playerDetected = collision.GetComponent<PlayerController>();
+
+        // Garante que só aplica dano se for o jogador e se ele não estiver morto
+        if (playerHealth != null && playerDetected != null && !playerHealth.isDead)
         {
-            collision.GetComponent<Health>().TakeDamage(damage);  
-            SoundManager.Instance.PlaySound(hitSound);
+            playerHealth.TakeDamage(damage);
+            
         }
     }
 }

@@ -9,12 +9,9 @@ public class Gem : MonoBehaviour, IIColectible
     [SerializeField] private GameObject portal;
     [SerializeField] private AudioClip portalSound;
 
-    
-
-
     public void Collect()
     {
-        SoundManager.Instance.PlaySound(gemSound);
+        SoundManager.instance.PlaySound(gemSound);
         StartCoroutine(Portal());
         
       
@@ -24,7 +21,7 @@ public class Gem : MonoBehaviour, IIColectible
     IEnumerator Portal()
     {
         yield return new WaitForSeconds(1f);
-        SoundManager.Instance.PlaySound(portalSound);
+        SoundManager.instance.PlaySound(portalSound);
         portal.SetActive(true);
         yield return new WaitForSeconds(0.7f);
         portal.SetActive(false);

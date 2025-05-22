@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            GameData = new GameData();
-            GameData.Load(); // Carrega os dados salvos
+            GameData = new GameData(); 
+            GameData.Load();           
+            Debug.Log("Score carregado: " + GameData.GetScore());
         }
         else
         {
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        GameData.Save(); // Salva quando o jogo � encerrado
+        GameData.Save(); // Salva quando o jogo é encerrado
     }
 }
 

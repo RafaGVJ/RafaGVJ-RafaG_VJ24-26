@@ -52,7 +52,7 @@ public class SpikeHead : EnemyDamage
                 attacking = true;
                 destination = directions[i];
                 checkTimer = 0;
-               
+
             }
         }
     }
@@ -67,14 +67,14 @@ public class SpikeHead : EnemyDamage
     {
         destination = transform.position; //Set destination as current position so it doesn't move
         attacking = false;
-       
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
         Stop(); //Stop spikehead once he hits something
-         Invoke("Restart", 2);
+        Invoke("Restart", 2);
     }
 
     private void Restart()
