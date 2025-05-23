@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikeHead : EnemyDamage
+public class SpikeHead : Enemy
 {
     [Header("SpikeHead Attributes")]
     [SerializeField] private float speed;
     [SerializeField] private float range;
     [SerializeField] private float checkDelay;
     [SerializeField] private LayerMask playerLayer;
+    
     private Vector3[] directions = new Vector3[4];
     private Vector3 destination;
     private float checkTimer;
@@ -72,7 +73,13 @@ public class SpikeHead : EnemyDamage
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(_damage);
+            Destroy(gameObject);
+        }
+        //base.OnTriggerEnter2D(collision);
         Stop(); //Stop spikehead once he hits something
         Invoke("Restart", 2);
     }
@@ -82,4 +89,5 @@ public class SpikeHead : EnemyDamage
         gameObject.transform.position = originalPos;
     }
 
+    
 }

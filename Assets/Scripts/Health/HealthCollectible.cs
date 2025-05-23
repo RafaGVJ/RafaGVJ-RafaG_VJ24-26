@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class HealthCollectible : MonoBehaviour
 {
-    [SerializeField] private float healthValue;
+    [SerializeField] private int healthValue;
     [SerializeField] private AudioClip healthSound;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerController playerDectet = collision.GetComponent<PlayerController>();
+        PlayerHealth playerDectet = collision.GetComponent<PlayerHealth>();
         if (playerDectet != null)
         {
-            collision.GetComponent<Health>().AddHealth(healthValue);
+            collision.GetComponent<PlayerHealth>().AddHealth(healthValue);
             SoundManager.instance.PlaySound(healthSound);
             Destroy(gameObject);
         }

@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
     [Header("Áudio")]
     [SerializeField] private AudioClip attackSound;
     [SerializeField] private AudioClip jumpSound;
-    [SerializeField] private AudioClip hurtSound;
-    [SerializeField] private AudioClip deathSound;
+  
     #endregion
 
     #region Components
@@ -28,8 +27,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
-    //private Health health;
     private PlayerRespawn respawn;
+    private PlayerHealth playerHealth;
     #endregion
 
     #region States
@@ -44,25 +43,14 @@ public class PlayerController : MonoBehaviour
     public event Action OnLand;
     #endregion
 
-    #region Health
     
-    [SerializeField] private int health = 10;
-
-    public int Health { get => health; set => health = value; }
-
-
-
-    //private int currentHealth;
-    //public int CurrentHealth { get => currentHealth; set => currentHealth = value; }
-    #endregion
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
-        
+        playerHealth = GetComponent<PlayerHealth>();
         respawn = GetComponent<PlayerRespawn>();
         
     }
@@ -171,10 +159,9 @@ public class PlayerController : MonoBehaviour
         {
             collectible.Collect();
         }
-
-
+      
     }
-
+    
 
     #region Respawn/Checkpoint
     public void SetCheckpoint(Transform checkpoint)
@@ -184,9 +171,11 @@ public class PlayerController : MonoBehaviour
 
     }
     #endregion
-    
 
    
+
+
+
 }
     
 

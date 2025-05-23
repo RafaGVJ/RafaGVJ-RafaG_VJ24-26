@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1576888463296318011}
   - component: {fileID: 2655473743552241755}
-  - component: {fileID: 7995403445785300837}
+  - component: {fileID: 2428294866038858250}
   - component: {fileID: 8665521431080335039}
   m_Layer: 0
   m_Name: Cave - RockCombinations1_15
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7995403445785300837
+--- !u!114 &2428294866038858250
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,11 +95,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1854219208770094337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dd2f50d759f4ef41bdad43a722acac3, type: 3}
+  m_Script: {fileID: 11500000, guid: 90aa04e1c0356f341a5ce8fedfd0850b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  hitSound: {fileID: 0}
+  _damage: 5
 --- !u!60 &8665521431080335039
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -291,7 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8742272348986441209}
   - component: {fileID: 8965936098854643285}
-  - component: {fileID: 3781869817266086988}
+  - component: {fileID: 5369648472306644827}
   - component: {fileID: 6029068479145852536}
   m_Layer: 0
   m_Name: Cave - RockCombinations1_15 (1)
@@ -367,7 +366,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3781869817266086988
+--- !u!114 &5369648472306644827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -376,11 +375,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2354246801300052265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dd2f50d759f4ef41bdad43a722acac3, type: 3}
+  m_Script: {fileID: 11500000, guid: 90aa04e1c0356f341a5ce8fedfd0850b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  hitSound: {fileID: 0}
+  _damage: 5
 --- !u!60 &6029068479145852536
 PolygonCollider2D:
   m_ObjectHideFlags: 0

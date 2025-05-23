@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4351795326668833022}
   - component: {fileID: 4953385707662496653}
-  - component: {fileID: 8983831931952395246}
+  - component: {fileID: 4792377435842378623}
   - component: {fileID: 4306161505179568092}
   m_Layer: 9
   m_Name: Spike
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8983831931952395246
+--- !u!114 &4792377435842378623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,11 +98,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4615672780482287724}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f5be2dcb10fc2347827514b07504de6, type: 3}
+  m_Script: {fileID: 11500000, guid: 90aa04e1c0356f341a5ce8fedfd0850b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
-  hitSound: {fileID: 8300000, guid: 1f53a076fc7e4864fbbb59c6d2312bb8, type: 3}
+  _damage: 3
 --- !u!61 &4306161505179568092
 BoxCollider2D:
   m_ObjectHideFlags: 0

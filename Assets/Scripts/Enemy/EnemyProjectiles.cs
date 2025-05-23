@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectiles : EnemyDamage
+public class EnemyProjectiles : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float resetTime;
-
+    [SerializeField] private int _damage;
     private float lifeTime;
 
     private void Update()
     {
-        float movementSpeed = speed * Time.deltaTime;
-        transform.Translate(movementSpeed, 0, 0);
-
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
         lifeTime += Time.deltaTime;
         if (lifeTime > resetTime)
         {
@@ -26,10 +24,15 @@ public class EnemyProjectiles : EnemyDamage
         gameObject.SetActive(true);
     }
 
-    private new void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-       
-            base.OnTriggerEnter2D(collision);
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(_damage);
+          
+        }
         gameObject.SetActive(false);
+
     }
 }

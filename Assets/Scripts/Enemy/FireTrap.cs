@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireTrap : MonoBehaviour
 {
     [Header("Damage")]
-    [SerializeField] private float fireDamage;
+    [SerializeField] private int fireDamage;
 
 
     [Header("FireTrap Timers")]
@@ -30,19 +30,17 @@ public class FireTrap : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Health playerHealth = collision.GetComponent<Health>();
-        PlayerController playerDetected = collision.GetComponent<PlayerController>();
-
-        if (playerHealth != null && playerDetected != null && !playerHealth.isDead)
+        if (!isTriggered)
         {
-            if (!isTriggered)
-            {
-                StartCoroutine(ActivateFireTrap());
-            }
+            StartCoroutine(ActivateFireTrap());
+        }
 
-            if (isActive && Time.time >= lastDamageTime + damageCooldown)
+        if (isActive && Time.time >= lastDamageTime + damageCooldown)
+        {
+            IDamageable target = collision.GetComponent<IDamageable>();
+            if (target != null)
             {
-                playerHealth.TakeDamage(fireDamage);
+                target.TakeDamage(fireDamage);
                 lastDamageTime = Time.time;
             }
         }

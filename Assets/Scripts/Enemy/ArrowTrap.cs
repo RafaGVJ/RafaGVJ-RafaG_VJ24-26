@@ -14,9 +14,20 @@ public class ArrowTrap : MonoBehaviour
     void Attack()
     {
         cooldownTimer = 0;
-        arrows[FindArrows()].transform.position = firePoint.position;
-       arrows[FindArrows()].GetComponent<EnemyProjectiles>().ActivateProjectile();
-        SoundManager.instance.PlaySound(arrowSound);
+
+        int arrowIndex = FindArrows();
+        if (arrowIndex == -1)
+        {
+            Debug.LogError("No available arrows");
+            return;
+        }
+
+        GameObject arrow = arrows[arrowIndex];
+    arrow.transform.position = firePoint.position;
+    arrow.GetComponent<EnemyProjectiles>().ActivateProjectile();
+    
+    SoundManager.instance.PlaySound(arrowSound);
+        
     }
 
     private int FindArrows()

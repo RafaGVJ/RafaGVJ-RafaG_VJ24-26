@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3941138298418598433}
   - component: {fileID: 4955311362921276449}
-  - component: {fileID: 1803971509935872797}
+  - component: {fileID: 9040304854062340720}
   - component: {fileID: 2948187159737235850}
   m_Layer: 0
   m_Name: Cave - SmallRocks_25
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1803971509935872797
+--- !u!114 &9040304854062340720
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,11 +95,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4721842413575903845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dd2f50d759f4ef41bdad43a722acac3, type: 3}
+  m_Script: {fileID: 11500000, guid: 90aa04e1c0356f341a5ce8fedfd0850b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  hitSound: {fileID: 0}
+  _damage: 5
 --- !u!60 &2948187159737235850
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -202,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6109446386415367169}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.256634, y: -0.7915387, z: -0.0022326112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -221,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6320942122476044554}
   - component: {fileID: 1766747876489455992}
-  - component: {fileID: 6161676989204791928}
+  - component: {fileID: 8336244935675805956}
   - component: {fileID: 6883580447532142291}
   m_Layer: 0
   m_Name: Cave - SmallRocks_25 (1)
@@ -297,7 +296,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6161676989204791928
+--- !u!114 &8336244935675805956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,11 +305,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6711282343097582833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dd2f50d759f4ef41bdad43a722acac3, type: 3}
+  m_Script: {fileID: 11500000, guid: 90aa04e1c0356f341a5ce8fedfd0850b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  hitSound: {fileID: 0}
+  _damage: 5
 --- !u!60 &6883580447532142291
 PolygonCollider2D:
   m_ObjectHideFlags: 0

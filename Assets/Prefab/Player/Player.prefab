@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6687287040306047016}
   - component: {fileID: 5503235422936903016}
-  - component: {fileID: 8818009338517376470}
+  - component: {fileID: 4169110025941141382}
   - component: {fileID: 521714331136425387}
   - component: {fileID: 2288910761620844877}
   - component: {fileID: 6001444959953151496}
@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.4, y: -0.68, z: -1}
-  m_LocalScale: {x: 34.88, y: 34.88, z: 34.88}
+  m_LocalScale: {x: 70, y: 70, z: 70}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8818009338517376470
+--- !u!114 &4169110025941141382
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,14 +99,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5092967709916768249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82ca283bdc1ab4b4981469e21cc1f5a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 2863e94dad764be45990a202ef575aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtSound: {fileID: 8300000, guid: 1f53a076fc7e4864fbbb59c6d2312bb8, type: 3}
-  deathSound: {fileID: 8300000, guid: a7fddda8e8ace5d4dbca0c8030f0e9b6, type: 3}
   anim: {fileID: 2288910761620844877}
   playerCollider: {fileID: 6923027066033159673}
-  startingHealth: 10
+  hurtSound: {fileID: 8300000, guid: 1f53a076fc7e4864fbbb59c6d2312bb8, type: 3}
+  deathSound: {fileID: 8300000, guid: a7fddda8e8ace5d4dbca0c8030f0e9b6, type: 3}
+  maxHealth: 10
 --- !u!114 &521714331136425387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,17 +119,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec96b8a7578e83448ab0aa54f6a2bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  jumpForce: 6
-  groundCheckDistance: 1
+  movementSpeed: 7
+  jumpForce: 9
+  groundCheckDistance: 0.7
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   attackSound: {fileID: 8300000, guid: 8603d4c561166294084d59f832f7e330, type: 3}
   jumpSound: {fileID: 8300000, guid: 7b8358cb28e79dc4c949ec4ec88b0d25, type: 3}
-  hurtSound: {fileID: 8300000, guid: 1f53a076fc7e4864fbbb59c6d2312bb8, type: 3}
-  deathSound: {fileID: 8300000, guid: a7fddda8e8ace5d4dbca0c8030f0e9b6, type: 3}
-  health: 10
 --- !u!95 &2288910761620844877
 Animator:
   serializedVersion: 5

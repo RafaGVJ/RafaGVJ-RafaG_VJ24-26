@@ -6,7 +6,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Image currentHealthBar;
     [SerializeField] private Image totalHealthBar;
 
-    [SerializeField] private Health playerHealth;
+    private PlayerHealth playerHealth;
 
 
     private void Start()
@@ -14,26 +14,34 @@ public class HealthBar : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
-            playerHealth = player.GetComponent<Health>();
-            totalHealthBar.fillAmount = 1f;
+            playerHealth = player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.OnHealthChanged += UpdateHealthUI;
+                UpdateHealthUI(playerHealth.CurrentHealth, playerHealth.MaxHealth);
+
+                if (totalHealthBar != null)
+                    totalHealthBar.fillAmount = 1f;
+            }
+            else
+            {
+                Debug.LogError("PlayerHealth component não encontrado no objeto Player.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Objeto com tag 'Player' não encontrado na cena.");
         }
     }
 
-    private void Update()
+
+
+    private void UpdateHealthUI(int current, int max)
     {
-        if (playerHealth == null)
-        {
-            GameObject player = GameObject.FindWithTag("Player");
-            if (player != null)
-            {
-                playerHealth = player.GetComponent<Health>();
-                totalHealthBar.fillAmount = 1f;
-            }
-            return; // ainda sem player
-        }
-        currentHealthBar.fillAmount = playerHealth.CurrentHealth / 10;
+        currentHealthBar.fillAmount = (float)current / max;
     }
 }
+
 
 
 

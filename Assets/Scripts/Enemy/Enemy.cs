@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float damage;
-
+    [SerializeField] protected int _damage;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        PlayerController playerDectected = collision.gameObject.GetComponent<PlayerController>();
-        if (playerDectected != null)
+        if (collision == null || collision.collider == null) return;
+        IDamageable damageable = collision.collider.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            collision.rigidbody.GetComponent<Health>().TakeDamage(damage);
-
+            damageable.TakeDamage(_damage);
         }
     }
-
-
 }
+
+
+
    
 
 

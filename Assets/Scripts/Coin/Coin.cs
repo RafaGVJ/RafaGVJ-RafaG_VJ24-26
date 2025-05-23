@@ -8,7 +8,6 @@ public class Coin : MonoBehaviour,IIColectible
     [SerializeField] private AudioClip coinSound;
     private UIManager uiManager;
 
-    
     private void Awake()
     {
         uiManager = FindAnyObjectByType<UIManager>();

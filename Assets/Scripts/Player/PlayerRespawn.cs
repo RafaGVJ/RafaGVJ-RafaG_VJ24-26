@@ -11,22 +11,22 @@ public class PlayerRespawn : MonoBehaviour
 
     private GameObject currentPortalInstance;
     private Transform currentCheckpoint;
-    private Health playerHealth;
+    private PlayerHealth playerHealth;
     private UIManager uiManager;
-    private Animator animator;
+    //private Animator animator;
 
     public Transform CurrentCheckpoint { get => currentCheckpoint; set => currentCheckpoint = value; }
 
     private void Awake()
     {
         if (playerHealth == null)
-            playerHealth = GetComponent<Health>();
+            playerHealth = GetComponent<PlayerHealth>();
 
         if (playerHealth == null)
-            playerHealth = FindObjectOfType<Health>();
+            playerHealth = FindObjectOfType<PlayerHealth>();
 
         uiManager = FindObjectOfType<UIManager>();
-        animator = FindObjectOfType<Animator>();
+        //animator = FindObjectOfType<Animator>();
 
     }
 
